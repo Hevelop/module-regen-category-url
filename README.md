@@ -22,7 +22,7 @@ Usage
 ------
 ```
 Usage:
- hevelop:regenurl -s|--store="..." [cids1] ... [cidsN]
+ hevelop:regencaturl [cids1] ... [cidsN]
 
 Arguments:
  cids                  Category to regenerate
