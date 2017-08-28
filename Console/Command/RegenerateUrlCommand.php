@@ -104,9 +104,12 @@ class RegenerateUrlCommand extends Command
                 UrlRewrite::REDIRECT_TYPE => 0
             ]);
             try {
-                $this->urlPersist->replace(
-                    $this->categoryUrlRewriteGenerator->generate($category)
-                );
+                foreach ($category->getStoreIds() as $storeId) {
+                    $category->setStoreId($storeId);
+                    $this->urlPersist->replace(
+                        $this->categoryUrlRewriteGenerator->generate($category)
+                    );
+                }
 
                 $out->writeln('<info>Regenerated url keys for category ' . $category->getId() . '</info>');
             } catch (\Exception $e) {
